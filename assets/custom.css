@@ -1,12 +1,353 @@
-/*// =============================================================================
-// Ella Custom CSS - Customize The Style For Layout
-// =============================================================================
+/* =============================================================================
+   READ TO LEAD — Design System v1.0
+   Colors: Teal #169380 / Gold #FAC775 / Dark #0F7468
+   Font: Tajawal (Arabic) — RTL First
+   ============================================================================= */
 
-// =============================================================================
-//
-// IMPORTANT DISCLAIMER
-// Shopify is notifying shop owners about the need to convert scss files to css files.
-// Please use only CSS to style the layout.
-//
-// =============================================================================*/
+/* --- Google Font Import --- */
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap');
 
+/* --- CSS Variables --- */
+:root {
+  --rtl-teal: #169380;
+  --rtl-teal-dark: #0F7468;
+  --rtl-teal-deeper: #085041;
+  --rtl-gold: #FAC775;
+  --rtl-gold-dark: #EF9F27;
+  --rtl-white: #ffffff;
+  --rtl-bg: #FAFBFC;
+  --rtl-text: #1a1a2e;
+  --rtl-text-light: #555;
+  --rtl-radius: 16px;
+  --rtl-radius-sm: 10px;
+  --rtl-shadow: 0 4px 24px -6px rgba(22,147,128,0.12);
+  --rtl-shadow-hover: 0 8px 32px -4px rgba(22,147,128,0.20);
+  --rtl-font: 'Tajawal', sans-serif;
+}
+
+/* --- Global Font Override --- */
+body, 
+body *,
+.halo-header,
+.section-header__title,
+.product-card__title,
+.product__title,
+.product__price,
+.btn,
+button,
+input,
+select,
+textarea,
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--rtl-font) !important;
+}
+
+/* --- Body Background --- */
+body {
+  background-color: var(--rtl-bg);
+}
+
+/* --- Header Styling --- */
+.halo-header,
+.header__wrapper,
+.header-default,
+.header-mobile,
+header {
+  background-color: var(--rtl-white) !important;
+  border-bottom: 2px solid rgba(22,147,128,0.08);
+}
+
+/* Announcement Bar */
+.announcement-bar,
+.halo-announcement-bar {
+  background: linear-gradient(135deg, var(--rtl-teal-dark), var(--rtl-teal)) !important;
+  color: var(--rtl-white) !important;
+  font-family: var(--rtl-font) !important;
+  font-weight: 500;
+}
+.announcement-bar a,
+.halo-announcement-bar a {
+  color: var(--rtl-gold) !important;
+  font-weight: 700;
+}
+
+/* Navigation */
+.site-nav__link,
+.halo-header .site-nav a,
+.header__menu-item a {
+  color: var(--rtl-text) !important;
+  font-weight: 600;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+.site-nav__link:hover,
+.halo-header .site-nav a:hover,
+.header__menu-item a:hover {
+  color: var(--rtl-teal) !important;
+}
+
+/* Categories sidebar in slider */
+.slideshow__categories .title {
+  background: var(--rtl-teal) !important;
+  color: var(--rtl-white) !important;
+  font-weight: 700;
+}
+
+/* --- Section Headers --- */
+.section-header__title,
+h2.section-header__title,
+.product-block__title,
+.halo-block-header .title {
+  color: var(--rtl-teal-dark) !important;
+  font-weight: 800 !important;
+  font-size: 22px !important;
+  position: relative;
+}
+
+/* Section header underline accent */
+.section-header__title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--rtl-gold), var(--rtl-gold-dark));
+  border-radius: 2px;
+  margin: 12px auto 0;
+}
+
+/* --- Product Cards --- */
+.product-card,
+.halo-product-card,
+.card-product,
+.product-card__wrapper {
+  border-radius: var(--rtl-radius) !important;
+  overflow: hidden;
+  box-shadow: var(--rtl-shadow);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(22,147,128,0.06);
+  background: var(--rtl-white);
+}
+.product-card:hover,
+.halo-product-card:hover,
+.card-product:hover {
+  box-shadow: var(--rtl-shadow-hover);
+  transform: translateY(-4px);
+}
+
+/* Product Card Title */
+.product-card__title a,
+.card-product__title a,
+.product-card__name a {
+  color: var(--rtl-text) !important;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.product-card__title a:hover,
+.card-product__title a:hover {
+  color: var(--rtl-teal) !important;
+}
+
+/* Product Card Price */
+.product-card__price .price-item,
+.card-product__price .price-item,
+.product-card__price .money {
+  color: var(--rtl-teal) !important;
+  font-weight: 800;
+  font-size: 16px;
+}
+.product-card__price .price-item--regular.price-item--sale,
+.price--on-sale .price-item--regular {
+  color: #999 !important;
+  text-decoration: line-through;
+}
+
+/* --- Buttons — Primary (Teal) --- */
+.btn--primary,
+.btn--addtocart,
+.shopify-payment-button__button,
+.product-form__cart-submit,
+button[name="add"],
+.add-to-cart-btn {
+  background: linear-gradient(135deg, var(--rtl-teal), var(--rtl-teal-dark)) !important;
+  color: var(--rtl-white) !important;
+  border: none !important;
+  border-radius: var(--rtl-radius-sm) !important;
+  font-weight: 700 !important;
+  font-family: var(--rtl-font) !important;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(22,147,128,0.3);
+}
+.btn--primary:hover,
+.btn--addtocart:hover,
+.product-form__cart-submit:hover,
+button[name="add"]:hover {
+  background: linear-gradient(135deg, var(--rtl-teal-dark), var(--rtl-teal-deeper)) !important;
+  box-shadow: 0 6px 20px rgba(22,147,128,0.4);
+  transform: translateY(-1px);
+}
+
+/* --- Buttons — Secondary (Gold) --- */
+.btn--secondary,
+.view-all-btn,
+.product-block .button-wrapper .btn,
+.section-header .btn {
+  background: linear-gradient(135deg, var(--rtl-gold), var(--rtl-gold-dark)) !important;
+  color: var(--rtl-text) !important;
+  border: none !important;
+  border-radius: var(--rtl-radius-sm) !important;
+  font-weight: 700 !important;
+  font-family: var(--rtl-font) !important;
+}
+.btn--secondary:hover,
+.view-all-btn:hover {
+  background: linear-gradient(135deg, var(--rtl-gold-dark), #D4850F) !important;
+}
+
+/* --- Sale Badge --- */
+.product-card__badge,
+.badge,
+.product-badge,
+.halo-badge {
+  background: var(--rtl-gold) !important;
+  color: var(--rtl-text) !important;
+  font-weight: 800;
+  border-radius: 8px;
+  font-size: 11px;
+  padding: 4px 10px;
+}
+
+/* --- Slideshow Dots --- */
+.slick-dots li.slick-active button,
+.slideshow__dots li.slick-active button {
+  background-color: var(--rtl-teal) !important;
+  border-color: var(--rtl-teal) !important;
+}
+
+/* --- Footer --- */
+.footer,
+.halo-footer,
+footer {
+  background: linear-gradient(180deg, var(--rtl-teal-deeper), #042E24) !important;
+  color: var(--rtl-white) !important;
+}
+.footer a,
+.halo-footer a,
+footer a {
+  color: rgba(255,255,255,0.75) !important;
+  transition: color 0.3s ease;
+}
+.footer a:hover,
+footer a:hover {
+  color: var(--rtl-gold) !important;
+}
+.footer h4,
+.footer .footer__title,
+.halo-footer h4 {
+  color: var(--rtl-gold) !important;
+  font-weight: 700;
+}
+
+/* --- Newsletter Section --- */
+.newsletter .btn,
+.newsletter-form .btn,
+.footer .newsletter-form__button {
+  background: var(--rtl-gold) !important;
+  color: var(--rtl-text) !important;
+  font-weight: 700;
+  border-radius: var(--rtl-radius-sm) !important;
+}
+
+/* --- Service/Stats Block --- */
+.service-block__item,
+.custom-service-block .item {
+  background: var(--rtl-white);
+  border-radius: var(--rtl-radius) !important;
+  box-shadow: var(--rtl-shadow);
+  border: 1px solid rgba(22,147,128,0.06);
+}
+.service-block__item:hover,
+.custom-service-block .item:hover {
+  box-shadow: var(--rtl-shadow-hover);
+  transform: translateY(-2px);
+}
+.custom-service-block .title-block,
+.service-block .text {
+  color: var(--rtl-teal-dark) !important;
+  font-weight: 800;
+}
+
+/* --- Breadcrumb --- */
+.breadcrumb a {
+  color: var(--rtl-teal) !important;
+}
+.breadcrumb__separator {
+  color: var(--rtl-gold) !important;
+}
+
+/* --- Collection Page --- */
+.collection-hero__title,
+.main-collection-banner__title {
+  color: var(--rtl-teal-dark) !important;
+  font-weight: 800;
+}
+
+/* --- Cart --- */
+.cart-notification,
+.halo-cart-sidebar {
+  border-top: 4px solid var(--rtl-teal);
+}
+.cart__checkout-button,
+.cart__ctas .btn {
+  background: linear-gradient(135deg, var(--rtl-teal), var(--rtl-teal-dark)) !important;
+  border-radius: var(--rtl-radius-sm) !important;
+}
+
+/* --- Quick View --- */
+.halo-quick-view .product__title {
+  color: var(--rtl-teal-dark) !important;
+  font-weight: 800;
+}
+
+/* --- Scrollbar --- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--rtl-teal);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--rtl-teal-dark);
+}
+
+/* --- Selection Color --- */
+::selection {
+  background: var(--rtl-teal);
+  color: var(--rtl-white);
+}
+
+/* --- Mobile Responsive --- */
+@media (max-width: 768px) {
+  .section-header__title,
+  h2.section-header__title {
+    font-size: 18px !important;
+  }
+  .product-card,
+  .halo-product-card {
+    border-radius: 12px !important;
+  }
+}
+
+/* --- Smooth Animations --- */
+* {
+  scroll-behavior: smooth;
+}
+.product-card,
+.btn,
+a {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}

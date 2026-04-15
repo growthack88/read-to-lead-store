@@ -1,4 +1,4 @@
-{% comment %} RTL Collections Grid — 4 Featured Collections {% endcomment %}
+{% comment %} RTL Collections Grid — 4 Featured Collections with Custom Images {% endcomment %}
 
 <section class="rtl-collections" id="rtl-collections">
   <div class="rtl-collections__container">
@@ -17,10 +17,16 @@
             {{ block.settings.emoji }}
           </div>
           <div class="rtl-col-card__image-wrap">
-            {% if col.image %}
+            {% if block.settings.custom_image != blank %}
+              <img src="{{ block.settings.custom_image | image_url: width: 800 }}" alt="{{ block.settings.custom_title | default: col.title }}" class="rtl-col-card__image" loading="lazy">
+            {% elsif col.image %}
               <img src="{{ col.image | image_url: width: 600 }}" alt="{{ col.title }}" class="rtl-col-card__image" loading="lazy">
             {% elsif col.products.first.featured_image %}
               <img src="{{ col.products.first.featured_image | image_url: width: 600 }}" alt="{{ col.title }}" class="rtl-col-card__image" loading="lazy">
+            {% else %}
+              <div class="rtl-col-card__placeholder">
+                <span>{{ block.settings.emoji }}</span>
+              </div>
             {% endif %}
           </div>
           <div class="rtl-col-card__content">
@@ -118,7 +124,7 @@
     box-shadow: 0 4px 15px rgba(0,0,0,0.08);
   }
   .rtl-col-card__image-wrap {
-    height: 200px;
+    height: 220px;
     overflow: hidden;
     background: linear-gradient(135deg, #f0faf8, #e8f5f2);
   }
@@ -130,6 +136,15 @@
   }
   .rtl-col-card:hover .rtl-col-card__image {
     transform: scale(1.08);
+  }
+  .rtl-col-card__placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #e8f5f2, #d4ede8);
+    font-size: 60px;
   }
   .rtl-col-card__content {
     padding: 24px 20px 20px;
@@ -197,7 +212,7 @@
     .rtl-collections { padding: 50px 0; }
     .rtl-collections__title { font-size: 28px; }
     .rtl-collections__grid { grid-template-columns: 1fr; gap: 16px; }
-    .rtl-col-card__image-wrap { height: 160px; }
+    .rtl-col-card__image-wrap { height: 180px; }
   }
 </style>
 
@@ -229,6 +244,12 @@
           "type": "collection",
           "id": "collection",
           "label": "Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_image",
+          "label": "Custom Cover Image",
+          "info": "ارفع صورة مخصصة للكارد (800×500 مثالي). لو فاضية هيستخدم صورة الـ Collection."
         },
         {
           "type": "text",

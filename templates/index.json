@@ -130,6 +130,7 @@
           "type": "collection_card",
           "settings": {
             "collection": "سلسلة-ببساطة",
+            "custom_image": "shopify://shop_images/0596bb51a495f77286879a0a00a05fc0.png",
             "custom_title": "سلسلة ببساطة",
             "emoji": "📖",
             "description": "كتب عملية تشرح أي موضوع ببساطة",
@@ -140,6 +141,7 @@
           "type": "collection_card",
           "settings": {
             "collection": "book-summaries",
+            "custom_image": "shopify://shop_images/7c6ea9664a52fe8bb108af57872f156c.png",
             "custom_title": "ملخصات الكتب",
             "emoji": "📚",
             "description": "أهم الكتب العالمية ملخصة بالعربي",

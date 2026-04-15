@@ -120,6 +120,7 @@
           "type": "collection_card",
           "settings": {
             "collection": "kits",
+            "custom_image": "shopify://shop_images/cbdd2a56d3cb4ea90cb36c1b91bab62f.png",
             "custom_title": "الحقائب المعرفية",
             "emoji": "🎯",
             "description": "حقائب مطبوعة + أدوات رقمية لكل تخصص",
@@ -151,7 +152,7 @@
         "collection_card_aXD8MX": {
           "type": "collection_card",
           "settings": {
-            "collection": "إصدراتنا-الخاصة",
+            "collection": "simply",
             "custom_image": "shopify://shop_images/9433221398b4ea13b4d734842e3fffe8.png",
             "custom_title": "إصداراتنا الخاصة",
             "emoji": "⭐",

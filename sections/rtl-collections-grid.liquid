@@ -1,0 +1,271 @@
+{% comment %} RTL Collections Grid — 4 Featured Collections {% endcomment %}
+
+<section class="rtl-collections" id="rtl-collections">
+  <div class="rtl-collections__container">
+    {% if section.settings.title != blank %}
+    <div class="rtl-collections__header">
+      <h2 class="rtl-collections__title">{{ section.settings.title }}</h2>
+      <p class="rtl-collections__subtitle">{{ section.settings.subtitle }}</p>
+    </div>
+    {% endif %}
+    <div class="rtl-collections__grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'collection_card' %}
+        {% assign col = block.settings.collection %}
+        <a href="{{ col.url }}" class="rtl-col-card" style="--card-accent: {{ block.settings.accent_color }};" {{ block.shopify_attributes }}>
+          <div class="rtl-col-card__icon">
+            {{ block.settings.emoji }}
+          </div>
+          <div class="rtl-col-card__image-wrap">
+            {% if col.image %}
+              <img src="{{ col.image | image_url: width: 600 }}" alt="{{ col.title }}" class="rtl-col-card__image" loading="lazy">
+            {% elsif col.products.first.featured_image %}
+              <img src="{{ col.products.first.featured_image | image_url: width: 600 }}" alt="{{ col.title }}" class="rtl-col-card__image" loading="lazy">
+            {% endif %}
+          </div>
+          <div class="rtl-col-card__content">
+            <h3 class="rtl-col-card__title">{{ block.settings.custom_title | default: col.title }}</h3>
+            <p class="rtl-col-card__desc">{{ block.settings.description }}</p>
+            <div class="rtl-col-card__meta">
+              <span class="rtl-col-card__count">{{ col.products_count }} منتج</span>
+              <span class="rtl-col-card__arrow">←</span>
+            </div>
+          </div>
+          <div class="rtl-col-card__shine"></div>
+        </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .rtl-collections {
+    padding: 70px 0;
+    direction: rtl;
+    background: #FAFBFC;
+  }
+  .rtl-collections__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
+  }
+  .rtl-collections__header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  .rtl-collections__title {
+    font-family: 'Tajawal', sans-serif !important;
+    font-size: 36px;
+    font-weight: 900;
+    color: #0F7468;
+    margin: 0 0 12px;
+    position: relative;
+    display: inline-block;
+  }
+  .rtl-collections__title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #FAC775, #EF9F27);
+    border-radius: 2px;
+    margin: 14px auto 0;
+  }
+  .rtl-collections__subtitle {
+    font-family: 'Tajawal', sans-serif !important;
+    font-size: 16px;
+    color: #666;
+    margin: 0;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .rtl-collections__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .rtl-col-card {
+    position: relative;
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    text-decoration: none;
+    box-shadow: 0 4px 24px -6px rgba(22,147,128,0.1);
+    border: 1px solid rgba(22,147,128,0.06);
+    transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+    display: flex;
+    flex-direction: column;
+  }
+  .rtl-col-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px -10px rgba(22,147,128,0.2);
+    border-color: var(--card-accent, #169380);
+  }
+  .rtl-col-card__icon {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 44px;
+    height: 44px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    z-index: 3;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  }
+  .rtl-col-card__image-wrap {
+    height: 200px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f0faf8, #e8f5f2);
+  }
+  .rtl-col-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .rtl-col-card:hover .rtl-col-card__image {
+    transform: scale(1.08);
+  }
+  .rtl-col-card__content {
+    padding: 24px 20px 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .rtl-col-card__title {
+    font-family: 'Tajawal', sans-serif !important;
+    font-size: 18px;
+    font-weight: 800;
+    color: #0F7468;
+    margin: 0 0 8px;
+    line-height: 1.4;
+  }
+  .rtl-col-card__desc {
+    font-family: 'Tajawal', sans-serif !important;
+    font-size: 13px;
+    color: #777;
+    line-height: 1.7;
+    margin: 0 0 16px;
+    flex: 1;
+  }
+  .rtl-col-card__meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 14px;
+    border-top: 1px solid #f0f0f0;
+  }
+  .rtl-col-card__count {
+    font-family: 'Tajawal', sans-serif !important;
+    font-size: 12px;
+    color: #169380;
+    font-weight: 700;
+    background: rgba(22,147,128,0.08);
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+  .rtl-col-card__arrow {
+    font-size: 20px;
+    color: #169380;
+    transition: transform 0.3s ease;
+  }
+  .rtl-col-card:hover .rtl-col-card__arrow {
+    transform: translateX(-6px);
+  }
+  .rtl-col-card__shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+    transition: 0.6s;
+    pointer-events: none;
+  }
+  .rtl-col-card:hover .rtl-col-card__shine {
+    left: 100%;
+  }
+  @media (max-width: 992px) {
+    .rtl-collections__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 576px) {
+    .rtl-collections { padding: 50px 0; }
+    .rtl-collections__title { font-size: 28px; }
+    .rtl-collections__grid { grid-template-columns: 1fr; gap: 16px; }
+    .rtl-col-card__image-wrap { height: 160px; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "RTL Collections Grid",
+  "tag": "section",
+  "class": "rtl-collections-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "اكتشف عالم المعرفة"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Section Subtitle",
+      "default": "اختار المجموعة اللي تناسب رحلتك"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection_card",
+      "name": "Collection Card",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "text",
+          "id": "custom_title",
+          "label": "Custom Title (optional)"
+        },
+        {
+          "type": "text",
+          "id": "emoji",
+          "label": "Emoji Icon",
+          "default": "📚"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "وصف قصير للمجموعة"
+        },
+        {
+          "type": "color",
+          "id": "accent_color",
+          "label": "Accent Color",
+          "default": "#169380"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "RTL Collections Grid",
+      "blocks": [
+        { "type": "collection_card", "settings": { "emoji": "🎯", "custom_title": "الحقائب المعرفية", "description": "حقائب مطبوعة + أدوات رقمية لكل تخصص", "accent_color": "#169380" } },
+        { "type": "collection_card", "settings": { "emoji": "📖", "custom_title": "سلسلة ببساطة", "description": "كتب عملية تشرح أي موضوع ببساطة", "accent_color": "#EF9F27" } },
+        { "type": "collection_card", "settings": { "emoji": "📚", "custom_title": "ملخصات الكتب", "description": "أهم الكتب العالمية ملخصة بالعربي", "accent_color": "#0F7468" } },
+        { "type": "collection_card", "settings": { "emoji": "⭐", "custom_title": "إصداراتنا الخاصة", "description": "كتب حصرية من Read to Lead", "accent_color": "#FAC775" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

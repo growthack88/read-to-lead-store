@@ -1,0 +1,106 @@
+{% comment %} RTL Trust/Social Proof Strip {% endcomment %}
+
+<section class="rtl-trust">
+  <div class="rtl-trust__container">
+    {% for block in section.blocks %}
+      <div class="rtl-trust__item" {{ block.shopify_attributes }}>
+        <span class="rtl-trust__icon">{{ block.settings.icon }}</span>
+        <div class="rtl-trust__text">
+          <span class="rtl-trust__number">{{ block.settings.number }}</span>
+          <span class="rtl-trust__label">{{ block.settings.label }}</span>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+<style>
+  .rtl-trust {
+    background: linear-gradient(135deg, #0F7468, #085041);
+    padding: 0;
+    direction: rtl;
+    overflow: hidden;
+  }
+  .rtl-trust__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .rtl-trust__item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 24px 20px;
+    position: relative;
+  }
+  .rtl-trust__item::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 25%;
+    height: 50%;
+    width: 1px;
+    background: rgba(255,255,255,0.15);
+  }
+  .rtl-trust__item:last-child::after { display: none; }
+  .rtl-trust__icon {
+    font-size: 28px;
+    line-height: 1;
+  }
+  .rtl-trust__number {
+    display: block;
+    font-family: 'Tajawal', sans-serif !important;
+    font-size: 22px;
+    font-weight: 900;
+    color: #FAC775;
+    line-height: 1.2;
+  }
+  .rtl-trust__label {
+    display: block;
+    font-family: 'Tajawal', sans-serif !important;
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+    font-weight: 500;
+  }
+  @media (max-width: 768px) {
+    .rtl-trust__container { justify-content: center; }
+    .rtl-trust__item { padding: 16px 14px; }
+    .rtl-trust__number { font-size: 18px; }
+    .rtl-trust__item::after { display: none; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "RTL Trust Strip",
+  "tag": "section",
+  "class": "rtl-trust-section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Trust Stat",
+      "settings": [
+        { "type": "text", "id": "icon", "label": "Emoji", "default": "📦" },
+        { "type": "text", "id": "number", "label": "Number", "default": "+4,700" },
+        { "type": "text", "id": "label", "label": "Label", "default": "طلب" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "RTL Trust Strip",
+      "blocks": [
+        { "type": "stat", "settings": { "icon": "📦", "number": "+4,700", "label": "طلب" } },
+        { "type": "stat", "settings": { "icon": "📚", "number": "+2,300", "label": "ملخص" } },
+        { "type": "stat", "settings": { "icon": "🏢", "number": "350+", "label": "ناشر" } },
+        { "type": "stat", "settings": { "icon": "🌍", "number": "3", "label": "أسواق" } },
+        { "type": "stat", "settings": { "icon": "📖", "number": "+120", "label": "كتاب" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

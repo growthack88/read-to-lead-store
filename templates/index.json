@@ -130,7 +130,7 @@
         "collection_card_6wDBEj": {
           "type": "collection_card",
           "settings": {
-            "collection": "سلسلة-ببساطة",
+            "collection": "simply",
             "custom_image": "shopify://shop_images/0596bb51a495f77286879a0a00a05fc0.png",
             "custom_title": "سلسلة ببساطة",
             "emoji": "📖",
@@ -311,7 +311,7 @@
         "product_block_layout": "grid",
         "product_bg": "#ffffff",
         "product_bg_gradient": "",
-        "product_block_collection": "سلسلة-ببساطة",
+        "product_block_collection": "simply",
         "product_block_limit": 8,
         "grid_gap": 30,
         "pb_style": "style1",

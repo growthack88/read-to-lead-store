@@ -129,7 +129,7 @@
         "collection_card_6wDBEj": {
           "type": "collection_card",
           "settings": {
-            "collection": "سلسلة-ببساطة",
+            "collection": "simply",
             "custom_title": "سلسلة ببساطة",
             "emoji": "📖",
             "description": "كتب عملية تشرح أي موضوع ببساطة",
@@ -307,7 +307,7 @@
         "product_block_layout": "grid",
         "product_bg": "#fff",
         "product_bg_gradient": "",
-        "product_block_collection": "سلسلة-ببساطة",
+        "product_block_collection": "simply",
         "product_block_limit": 8,
         "grid_gap": 30,
         "pb_style": "style1",

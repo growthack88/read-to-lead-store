@@ -113,7 +113,7 @@
           "type": "product_block",
           "settings": {
             "heading": "كتب مميزة",
-            "product_block_collection": "simply",
+            "product_block_collection": "special",
             "product_block_layout": "slider",
             "product_block_limit": 8,
             "product_block_dots": false,
